@@ -71,6 +71,6 @@ section img {
   display: block;
 }
 .link:hover {
-  color: #00ff37;           /* Bright orange on hover */
+  color: #00ff37;           
   text-decoration: underline;
 }
