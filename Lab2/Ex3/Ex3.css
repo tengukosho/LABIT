@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  height: 100vh; 
+  background-color: #f7d9a4;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.box {
+  border: 1px solid rgb(178, 196, 100);
+  padding: 10px;
+  height: 200px;
+  font: bold 14px Arial, sans-serif;
+}
+
+.header, .footer {
+  flex: 1 1 100%;
+}
+
+.main {
+  display: flex;
+}
+
+.sidebarA {
+  flex: 0.5;
+}
+
+.content {
+  flex: 2;
+}
+
+.sidebarB {
+  flex: 0.5;
+}
