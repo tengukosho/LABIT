@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Form</title>
+  <link rel="stylesheet" href="Ex2.css">
+</head>
+<body>
+  <form>
+    <img src="logo.png" alt="University Logo" class="logo">
+    <h2>Survey</h2>
+    <p>If you have a moment, we'd appreciate it if you would fill out this survey.</p>
+
+    <h3>Your information:</h3>
+    <div class="inputbar"><label>First Name:</label><input type="text" name="firstName"></div>
+    <div class="inputbar"><label>Last Name:</label><input type="text" name="lastName"></div>
+    <div class="inputbar"><label>Email:</label><input type="text" name="email"></div>
+    <div class="inputbar"><label>Date of Birth:</label><input type="text" name="dob" placeholder="MM/DD/YYYY"></div>
+
+    <h4>How did you hear about us?</h4>
+    <input type="radio" name="ref" value="search"> Search engine
+    <input type="radio" name="ref" value="word"> Word of mouth
+    <input type="radio" name="ref" value="social"> Social Media
+    <input type="radio" name="ref" value="other"> Other
+
+    <h4>Would you like to receive announcements about new CDs and special offers?</h4>
+    <input type="checkbox" name="offers1"> YES, I’d like that.
+    <input type="checkbox" name="offers2"> YES, please send me email announcements.<br><br>
+
+    <label>Please contact me by:</label>
+    <select id="contact" name="contact">
+        <option>Email or postal mail</option>
+        <option>Email only</option>
+        <option>Postal mail only</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

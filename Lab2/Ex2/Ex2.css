@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #000;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+form {
+  border: 1px solid #8ca3af;
+  padding: 25px;
+  width: 500px;
+}
+
+.logo {
+  width: 100px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #006666;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #006666;
+  font-size: 1em;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  color: #006666;
+  font-size: 1em;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.inputbar {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.inputbar label {
+  width: 110px;
+  font-weight: bold;
+}
+
+select {
+  display: inline;   /* make sure it doesn’t go to the next line */
+  width: auto;       
+}
