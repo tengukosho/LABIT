@@ -33,6 +33,12 @@
             color: #555;
             font-weight: bold;
         }
+        small {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            font-style: italic;
+        }
         input[type="text"],
         input[type="email"] {
             width: 100%;
@@ -174,7 +180,7 @@
         %>
                             <h1>Edit Student</h1>
                             
-                            <form action="process_edit.jsp" method="post">
+                            <form action="process_edit.jsp" method="post" onsubmit="return submitForm(this)">
                                 <!-- Hidden input for student ID -->
                                 <input type="hidden" name="id" value="<%= studentId %>">
                                 
@@ -190,7 +196,13 @@
                                 
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" value="<%= email != null ? email : "" %>">
+                                    <input type="email" 
+                                           id="email" 
+                                           name="email" 
+                                           value="<%= email != null ? email : "" %>"
+                                           pattern="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                                           title="Please enter a valid email address">
+                                    <small style="color: #666;">Optional - Must be valid email format if provided</small>
                                 </div>
                                 
                                 <div class="form-group">
@@ -249,5 +261,15 @@
             }
         %>
     </div>
+    
+    <script>
+        function submitForm(form) {
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            btn.style.backgroundColor = '#ccc';
+            return true;
+        }
+    </script>
 </body>
 </html>

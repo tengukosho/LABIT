@@ -32,6 +32,12 @@
             color: #555;
             font-weight: bold;
         }
+        small {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            font-style: italic;
+        }
         input[type="text"],
         input[type="email"] {
             width: 100%;
@@ -93,20 +99,37 @@
     <div class="container">
         <h1>Add New Student</h1>
         
-        <form action="process_add.jsp" method="post">
+        <form action="process_add.jsp" method="post" onsubmit="return submitForm(this)">
             <div class="form-group">
                 <label for="student_code">Student Code <span class="required">*</span></label>
-                <input type="text" id="student_code" name="student_code" placeholder="Enter student code (e.g., STU006)" required>
+                <input type="text" 
+                       id="student_code" 
+                       name="student_code" 
+                       placeholder="Enter student code (e.g., ST001, CS123)" 
+                       pattern="[A-Z]{2}[0-9]{3,}"
+                       title="Must be 2 uppercase letters followed by at least 3 digits"
+                       required>
+                <small style="color: #666;">Format: 2 uppercase letters + 3+ digits (e.g., ST001)</small>
             </div>
             
             <div class="form-group">
                 <label for="full_name">Full Name <span class="required">*</span></label>
-                <input type="text" id="full_name" name="full_name" placeholder="Enter full name" required>
+                <input type="text" 
+                       id="full_name" 
+                       name="full_name" 
+                       placeholder="Enter full name" 
+                       required>
             </div>
             
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter email address">
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       placeholder="Enter email address (e.g., john@example.com)"
+                       pattern="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                       title="Please enter a valid email address">
+                <small style="color: #666;">Optional - Must be valid email format if provided</small>
             </div>
             
             <div class="form-group">
@@ -122,5 +145,15 @@
         
         <a href="list_students.jsp" class="back-link">← Back to Student List</a>
     </div>
+    
+    <script>
+        function submitForm(form) {
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            btn.style.backgroundColor = '#ccc';
+            return true;
+        }
+    </script>
 </body>
 </html>

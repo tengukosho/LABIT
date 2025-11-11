@@ -34,6 +34,14 @@
         errorMessage = "Required field missing. Full Name is required.";
     }
     
+    // Validate email format if provided (optional field)
+    if (!hasError && email != null && !email.trim().isEmpty()) {
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            hasError = true;
+            errorMessage = "Invalid email format. Please enter a valid email address (e.g., john@example.com).";
+        }
+    }
+    
     if (!hasError) {
         Connection conn = null;
         PreparedStatement pstmt = null;

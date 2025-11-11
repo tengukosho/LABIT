@@ -18,6 +18,22 @@
         errorMessage = "Required fields missing. Student Code and Full Name are required.";
     }
     
+    // Validate student code pattern: 2 uppercase letters + 3+ digits
+    if (!hasError && studentCode != null && !studentCode.trim().isEmpty()) {
+        if (!studentCode.matches("[A-Z]{2}[0-9]{3,}")) {
+            hasError = true;
+            errorMessage = "Invalid student code format. Must be 2 uppercase letters followed by at least 3 digits (e.g., ST001, CS123).";
+        }
+    }
+    
+    // Validate email format if provided (optional field)
+    if (!hasError && email != null && !email.trim().isEmpty()) {
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            hasError = true;
+            errorMessage = "Invalid email format. Please enter a valid email address (e.g., john@example.com).";
+        }
+    }
+    
     if (!hasError) {
         Connection conn = null;
         PreparedStatement pstmt = null;
