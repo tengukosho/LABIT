@@ -14,112 +14,159 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
             min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+        }
+        
+        .header {
             background: white;
-            border-radius: 10px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+            border-left: 5px solid #3b82f6;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 32px;
+        .header h1 {
+            font-size: 2em;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
         
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-style: italic;
+        .header p {
+            color: #64748b;
+            font-size: 1em;
+        }
+        
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .message {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-weight: 500;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background-color: #ecfdf5;
+            color: #047857;
+            border: 1px solid #d1fae5;
+        }
+        
+        .success::before {
+            content: "✓";
+            font-size: 18px;
+            background: #047857;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background-color: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
         }
         
-        .btn {
-            display: inline-block;
+        .error::before {
+            content: "✗";
+            font-size: 18px;
+            background: #dc2626;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-add {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
             padding: 12px 24px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-weight: 600;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .btn-primary:hover {
+        .btn-add:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
         }
         
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
+        .btn-add::before {
+            content: "➕";
+            font-size: 16px;
         }
         
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-            padding: 8px 16px;
-            font-size: 13px;
-        }
-        
-        .btn-danger:hover {
-            background-color: #c82333;
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
         }
         
         thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
         }
         
-        th, td {
-            padding: 15px;
+        th {
+            padding: 16px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            font-weight: 600;
+            font-size: 0.875em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
-        th {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
         }
         
         tbody tr {
@@ -127,55 +174,131 @@
         }
         
         tbody tr:hover {
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
         }
         
-        .actions {
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .action-links {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+        }
+        
+        .btn-edit, .btn-delete {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.875em;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .btn-edit {
+            background: #eff6ff;
+            color: #3b82f6;
+            border: 1px solid #dbeafe;
+        }
+        
+        .btn-edit:hover {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+        
+        .btn-delete {
+            background: #fef2f2;
+            color: #ef4444;
+            border: 1px solid #fecaca;
+        }
+        
+        .btn-delete:hover {
+            background: #fecaca;
+            border-color: #ef4444;
         }
         
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
-            color: #999;
+            padding: 80px 20px;
         }
         
         .empty-state-icon {
-            font-size: 64px;
+            font-size: 5em;
             margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        .empty-state h3 {
+            color: #64748b;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+        
+        .empty-state p {
+            color: #94a3b8;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: #475569;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .content {
+                padding: 16px;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.875em;
+            }
+            
+            .action-links {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📚 Student Management System</h1>
-        <p class="subtitle">MVC Pattern with Javax EE & JSTL</p>
-        
-        <!-- Success Message -->
-        <c:if test="${not empty param.message}">
-            <div class="message success">
-                ✅ ${param.message}
-            </div>
-        </c:if>
-        
-        <!-- Error Message -->
-        <c:if test="${not empty param.error}">
-            <div class="message error">
-                ❌ ${param.error}
-            </div>
-        </c:if>
-        
-        <!-- Add New Student Button -->
-        <div style="margin-bottom: 20px;">
-            <a href="student?action=new" class="btn btn-primary">
-                ➕ Add New Student
-            </a>
+        <div class="header">
+            <h1>📚 Student Management System (MVC)</h1>
+            <p>View and manage student records</p>
         </div>
         
-        <!-- Student Table -->
-        <c:choose>
-            <c:when test="${not empty students}">
+        <div class="content">
+            <!-- Display success message if exists -->
+            <c:if test="${not empty sessionScope.message}">
+                <div class="message success">
+                    ${sessionScope.message}
+                </div>
+                <c:remove var="message" scope="session"/>
+            </c:if>
+            
+            <!-- Display error message if exists -->
+            <c:if test="${not empty sessionScope.error}">
+                <div class="message error">
+                    ${sessionScope.error}
+                </div>
+                <c:remove var="error" scope="session"/>
+            </c:if>
+            
+            <!-- Add New Student Button -->
+            <a href="student?action=new" class="btn-add">+ Add New Student</a>
+            
+            <div class="table-container">
                 <table>
                     <thead>
                         <tr>
@@ -188,38 +311,57 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Loop through students using c:forEach -->
                         <c:forEach var="student" items="${students}">
                             <tr>
                                 <td>${student.id}</td>
-                                <td><strong>${student.studentCode}</strong></td>
+                                <td>${student.studentCode}</td>
                                 <td>${student.fullName}</td>
-                                <td>${student.email}</td>
-                                <td>${student.major}</td>
                                 <td>
-                                    <div class="actions">
-                                        <a href="student?action=edit&id=${student.id}" class="btn btn-secondary">
-                                            ✏️ Edit
-                                        </a>
+                                    <c:choose>
+                                        <c:when test="${not empty student.email}">
+                                            ${student.email}
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span style="color: #999;">N/A</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${not empty student.major}">
+                                            ${student.major}
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span style="color: #999;">N/A</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>
+                                    <div class="action-links">
+                                        <a href="student?action=edit&id=${student.id}" class="btn-edit">✏️ Edit</a>
                                         <a href="student?action=delete&id=${student.id}" 
-                                           class="btn btn-danger"
-                                           onclick="return confirm('Are you sure you want to delete this student?')">
-                                            🗑️ Delete
-                                        </a>
+                                           class="btn-delete"
+                                           onclick="return confirm('Are you sure you want to delete this student?')">🗑️ Delete</a>
                                     </div>
                                 </td>
                             </tr>
                         </c:forEach>
+                        
+                        <!-- Handle empty list -->
+                        <c:if test="${empty students}">
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    <div class="empty-state-icon">📋</div>
+                                    <h3>No Students Found</h3>
+                                    <p>Click "Add New Student" to get started!</p>
+                                </td>
+                            </tr>
+                        </c:if>
                     </tbody>
                 </table>
-            </c:when>
-            <c:otherwise>
-                <div class="empty-state">
-                    <div class="empty-state-icon">📭</div>
-                    <h3>No students found</h3>
-                    <p>Start by adding a new student</p>
-                </div>
-            </c:otherwise>
-        </c:choose>
+            </div>
+        </div>
     </div>
 </body>
 </html>

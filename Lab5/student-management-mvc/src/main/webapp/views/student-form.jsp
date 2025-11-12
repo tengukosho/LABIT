@@ -19,216 +19,280 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .container {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            width: 100%;
             max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 28px;
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 40px 30px;
             text-align: center;
         }
         
+        .header h1 {
+            font-size: 1.75em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            opacity: 0.95;
+            font-size: 0.95em;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
         
         label {
             display: block;
             margin-bottom: 8px;
-            color: #555;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-        
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: #667eea;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 0.9em;
         }
         
         .required {
-            color: #dc3545;
+            color: #ef4444;
+        }
+        
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+        
+        input[readonly] {
+            background-color: #f8fafc;
+            color: #64748b;
+            cursor: not-allowed;
+            border-color: #cbd5e1;
+        }
+        
+        .helper-text {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.8em;
+            color: #64748b;
         }
         
         .button-group {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 12px;
+            margin-top: 32px;
         }
         
-        .btn {
+        button, .btn-cancel {
             flex: 1;
-            padding: 14px;
+            padding: 14px 20px;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .btn-submit {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         
-        .btn-primary:hover {
+        .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
         }
         
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
+        .btn-submit:active {
+            transform: translateY(0);
         }
         
-        .btn-secondary:hover {
-            background-color: #5a6268;
+        .btn-cancel {
+            background-color: #f1f5f9;
+            color: #475569;
+            text-decoration: none;
+            border: 2px solid #e2e8f0;
         }
         
-        .info-text {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
+        .btn-cancel:hover {
+            background-color: #e2e8f0;
+            border-color: #cbd5e1;
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            
+            .container {
+                border-radius: 0;
+                min-height: 100vh;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>
-            <c:choose>
-                <c:when test="${student != null}">
-                    ✏️ Edit Student
-                </c:when>
-                <c:otherwise>
-                    ➕ Add New Student
-                </c:otherwise>
-            </c:choose>
-        </h1>
+        <div class="header">
+            <h1>
+                <c:if test="${student != null}">✏️ Edit Student</c:if>
+                <c:if test="${student == null}">➕ Add New Student</c:if>
+            </h1>
+            <p>
+                <c:choose>
+                    <c:when test="${student != null}">Update student information</c:when>
+                    <c:otherwise>Fill in the form to add a new student</c:otherwise>
+                </c:choose>
+            </p>
+        </div>
         
-        <form action="student" method="POST">
-            <!-- Hidden field for action -->
-            <input type="hidden" name="action" 
-                   value="${student != null ? 'update' : 'insert'}">
-            
-            <!-- Hidden field for ID (only for update) -->
-            <c:if test="${student != null}">
-                <input type="hidden" name="id" value="${student.id}">
-            </c:if>
-            
-            <!-- Student Code -->
-            <div class="form-group">
-                <label for="studentCode">
-                    Student Code <span class="required">*</span>
-                </label>
-                <input type="text" 
-                       id="studentCode" 
-                       name="studentCode" 
-                       value="${student.studentCode}"
-                       ${student != null ? 'readonly' : 'required'}
-                       placeholder="e.g., SV001, IT123">
-                <p class="info-text">Format: 2 letters + 3+ digits</p>
-            </div>
-            
-            <!-- Full Name -->
-            <div class="form-group">
-                <label for="fullName">
-                    Full Name <span class="required">*</span>
-                </label>
-                <input type="text" 
-                       id="fullName" 
-                       name="fullName" 
-                       value="${student.fullName}"
-                       required
-                       placeholder="Enter full name">
-            </div>
-            
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">
-                    Email <span class="required">*</span>
-                </label>
-                <input type="email" 
-                       id="email" 
-                       name="email" 
-                       value="${student.email}"
-                       required
-                       placeholder="student@example.com">
-            </div>
-            
-            <!-- Major -->
-            <div class="form-group">
-                <label for="major">
-                    Major <span class="required">*</span>
-                </label>
-                <select id="major" name="major" required>
-                    <option value="">-- Select Major --</option>
-                    <option value="Computer Science" 
-                            ${student.major == 'Computer Science' ? 'selected' : ''}>
-                        Computer Science
-                    </option>
-                    <option value="Information Technology" 
-                            ${student.major == 'Information Technology' ? 'selected' : ''}>
-                        Information Technology
-                    </option>
-                    <option value="Software Engineering" 
-                            ${student.major == 'Software Engineering' ? 'selected' : ''}>
-                        Software Engineering
-                    </option>
-                    <option value="Business Administration" 
-                            ${student.major == 'Business Administration' ? 'selected' : ''}>
-                        Business Administration
-                    </option>
-                </select>
-            </div>
-            
-            <!-- Buttons -->
-            <div class="button-group">
-                <button type="submit" class="btn btn-primary">
-                    <c:choose>
-                        <c:when test="${student != null}">
-                            💾 Update Student
-                        </c:when>
-                        <c:otherwise>
-                            ➕ Add Student
-                        </c:otherwise>
-                    </c:choose>
-                </button>
-                <a href="student?action=list" class="btn btn-secondary">
-                    ❌ Cancel
-                </a>
-            </div>
-        </form>
+        <div class="content">
+            <form action="student" method="POST">
+                <!-- Hidden field for action (insert or update) -->
+                <input type="hidden" name="action" value="${student != null ? 'update' : 'insert'}">
+                
+                <!-- Hidden field for id if editing -->
+                <c:if test="${student != null}">
+                    <input type="hidden" name="id" value="${student.id}">
+                </c:if>
+                
+                <!-- Student Code Field -->
+                <div class="form-group">
+                    <label for="studentCode">
+                        Student Code <span class="required">*</span>
+                    </label>
+                    <input type="text" 
+                           id="studentCode" 
+                           name="studentCode" 
+                           value="${student != null ? student.studentCode : ''}"
+                           placeholder="e.g., ST001, CS123"
+                           pattern="[A-Z]{2}[0-9]{3,}"
+                           title="Must be 2 uppercase letters followed by at least 3 digits"
+                           <c:if test="${student != null}">readonly</c:if>
+                           <c:if test="${student == null}">required</c:if>>
+                    <span class="helper-text">
+                        <c:choose>
+                            <c:when test="${student != null}">Student code cannot be changed</c:when>
+                            <c:otherwise>Format: 2 uppercase letters + 3+ digits (e.g., ST001)</c:otherwise>
+                        </c:choose>
+                    </span>
+                </div>
+                
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="fullName">
+                        Full Name <span class="required">*</span>
+                    </label>
+                    <input type="text" 
+                           id="fullName" 
+                           name="fullName" 
+                           value="${student != null ? student.fullName : ''}"
+                           placeholder="Enter full name"
+                           required>
+                </div>
+                
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">
+                        Email
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           value="${student != null ? student.email : ''}"
+                           placeholder="Enter email address"
+                           pattern="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                           title="Please enter a valid email address">
+                    <span class="helper-text">Optional - Must be valid email format if provided</span>
+                </div>
+                
+                <!-- Major Field -->
+                <div class="form-group">
+                    <label for="major">
+                        Major
+                    </label>
+                    <input type="text" 
+                           id="major" 
+                           name="major" 
+                           value="${student != null ? student.major : ''}"
+                           placeholder="Enter major">
+                    <span class="helper-text">Optional - e.g., Computer Science, Data Science</span>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">
+                        <c:choose>
+                            <c:when test="${student != null}">Update Student</c:when>
+                            <c:otherwise>Add Student</c:otherwise>
+                        </c:choose>
+                    </button>
+                    <a href="student?action=list" class="btn-cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>

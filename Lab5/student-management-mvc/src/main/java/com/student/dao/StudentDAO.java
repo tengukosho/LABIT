@@ -63,6 +63,117 @@ public class StudentDAO {
     }
     
     /**
+     * Get student by ID
+     * @param id Student ID
+     * @return Student object or null if not found
+     */
+    public Student getStudentById(int id) {
+        String sql = "SELECT * FROM students WHERE id = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, id);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Student student = new Student();
+                    student.setId(rs.getInt("id"));
+                    student.setStudentCode(rs.getString("student_code"));
+                    student.setFullName(rs.getString("full_name"));
+                    student.setEmail(rs.getString("email"));
+                    student.setMajor(rs.getString("major"));
+                    student.setCreatedAt(rs.getTimestamp("created_at"));
+                    
+                    return student;
+                }
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("Error getting student by ID: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Insert new student
+     * @param student Student object to insert
+     * @return true if successful, false otherwise
+     */
+    public boolean insertStudent(Student student) {
+        String sql = "INSERT INTO students (student_code, full_name, email, major) VALUES (?, ?, ?, ?)";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, student.getStudentCode());
+            pstmt.setString(2, student.getFullName());
+            pstmt.setString(3, student.getEmail());
+            pstmt.setString(4, student.getMajor());
+            
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+            
+        } catch (SQLException e) {
+            System.err.println("Error inserting student: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    /**
+     * Update existing student
+     * @param student Student object with updated data
+     * @return true if successful, false otherwise
+     */
+    public boolean updateStudent(Student student) {
+        String sql = "UPDATE students SET student_code = ?, full_name = ?, email = ?, major = ? WHERE id = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, student.getStudentCode());
+            pstmt.setString(2, student.getFullName());
+            pstmt.setString(3, student.getEmail());
+            pstmt.setString(4, student.getMajor());
+            pstmt.setInt(5, student.getId());
+            
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+            
+        } catch (SQLException e) {
+            System.err.println("Error updating student: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    /**
+     * Delete student by ID
+     * @param id Student ID to delete
+     * @return true if successful, false otherwise
+     */
+    public boolean deleteStudent(int id) {
+        String sql = "DELETE FROM students WHERE id = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, id);
+            
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+            
+        } catch (SQLException e) {
+            System.err.println("Error deleting student: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    /**
      * Test method - remove after testing
      */
     public static void main(String[] args) {
