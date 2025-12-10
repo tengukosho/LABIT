@@ -3,6 +3,7 @@ package com.example.customerapi.controller;
 import com.example.customerapi.dto.CustomerRequestDTO;
 import com.example.customerapi.dto.CustomerResponseDTO;
 import com.example.customerapi.dto.CustomerUpdateDTO;
+import com.example.customerapi.entity.Customer;
 import com.example.customerapi.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,13 +72,20 @@ public class CustomerRestController {
         return ResponseEntity.ok(customers);
     }
 
-    @GetMapping("/status/{status}")
-    public ResponseEntity<List<CustomerResponseDTO>> getCustomersByStatus(
-        @PathVariable String status) {
-
-        List<CustomerResponseDTO> customers = customerService.getCustomersByStatus(status);
+    @GetMapping("/status")
+    public ResponseEntity<List<CustomerResponseDTO>> getCustomersByStatus(@RequestParam String status) {
+        Customer.CustomerStatus customerStatus;
+        try {
+            customerStatus = Customer.CustomerStatus.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest()
+                .body(List.of()); // or a custom error message
+        }
+    
+        List<CustomerResponseDTO> customers = customerService.getCustomersByStatus(customerStatus.name());
         return ResponseEntity.ok(customers);
     }
+
 
     @GetMapping("/advanced-search")
     public ResponseEntity<List<CustomerResponseDTO>> advancedSearch(
